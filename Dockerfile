@@ -17,9 +17,6 @@ RUN apt-get update; apt-get install zip netcat -y; \
 
 RUN mkdir ${PENTAHO_HOME}; useradd -s /bin/bash -d ${PENTAHO_HOME} pentaho; chown pentaho:pentaho ${PENTAHO_HOME}
 
-COPY crontab /etc
-COPY startcron.sh /usr/local/bin
-
 #Diretório contendo as transformações
 RUN mkdir /dados
 
