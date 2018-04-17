@@ -30,4 +30,4 @@ RUN /usr/bin/unzip -q /tmp/pentaho-pdi.zip -d  $PENTAHO_HOME; \
     rm -f /tmp/pentaho-pdi.zip; \
     chmod +x $PENTAHO_HOME/data-integration/*.sh
 
-CMD ["sh", "/usr/sbin/cron"]
+CMD ["/usr/sbin/cron"]
