@@ -26,8 +26,11 @@ VOLUME /dados
 # Download Pentaho PDI 
 RUN wget --progress=dot:giga https://downloads.sourceforge.net/project/pentaho/Pentaho%208.0/client-tools/pdi-ce-8.0.0.0-28.zip -O /tmp/pentaho-pdi.zip 
 
+#COPY pdi.zip /tmp/pentaho-pdi.zip
+
 RUN /usr/bin/unzip -q /tmp/pentaho-pdi.zip -d  $PENTAHO_HOME; \
     rm -f /tmp/pentaho-pdi.zip; \
     chmod +x $PENTAHO_HOME/data-integration/*.sh
 
-CMD ["/usr/sbin/cron"]
+COPY startcron.sh /usr/local/bin
+
