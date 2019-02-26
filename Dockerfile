@@ -12,7 +12,7 @@ ENV PENTAHO_JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
 
 # Install Dependences
 RUN apt-get update; apt-get install zip netcat -y; \
-    apt-get install wget unzip git vim cron -y; \
+    apt-get install wget unzip git vim cron dnsutils -y; \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN mkdir ${PENTAHO_HOME}; useradd -s /bin/bash -d ${PENTAHO_HOME} pentaho; chown pentaho:pentaho ${PENTAHO_HOME}
