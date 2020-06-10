@@ -7,8 +7,8 @@ ENV PENTAHO_HOME /opt/pentaho
 
 # Apply JAVA_HOME
 RUN . /etc/environment
-ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
-ENV PENTAHO_JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
+ENV JAVA_HOME /usr/local/openjdk-8
+ENV PENTAHO_JAVA_HOME /usr/local/openjdk-8
 
 # Install Dependences
 RUN apt-get update; apt-get install zip netcat -y; \
@@ -33,4 +33,5 @@ RUN /usr/bin/unzip -q /tmp/pentaho-pdi.zip -d  $PENTAHO_HOME; \
     chmod +x $PENTAHO_HOME/data-integration/*.sh
 
 COPY startcron.sh /usr/local/bin
-
+COPY ojdbc6.jar ${PENTAHO_HOME}/data-integration/lib/ojdbc6.jar
+COPY pdi-google-spreadsheet-plugin ${PENTAHO_HOME}/data-integration/plugins/steps/pdi-google-spreadsheet-plugin
